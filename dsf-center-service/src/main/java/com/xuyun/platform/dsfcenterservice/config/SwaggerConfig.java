@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableAutoConfiguration
 public class SwaggerConfig {
 
-    @Value("${swagger.scope: com.invech.platform.dsfcenterservice.controller}")
+    @Value("${swagger.scope: com.xuyun.platform.dsfcenterservice.controller}")
     private String basePackage;
 
     @Value("${swagger.profile}")
@@ -50,8 +50,8 @@ public class SwaggerConfig {
 
     private ApiInfo buildApiInf() {
         return new ApiInfoBuilder()
-                .title("invech dsf-center-service API文档")
-                .contact("invech")
+                .title("xuyun dsf-center-service API文档")
+                .contact("xuyun")
                 .version("1.0")
                 .build();
     }

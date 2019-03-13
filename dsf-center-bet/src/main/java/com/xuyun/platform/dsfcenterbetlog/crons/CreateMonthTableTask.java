@@ -1,6 +1,6 @@
 package com.xuyun.platform.dsfcenterbetlog.crons;
 
-import com.invech.platform.dsfcenterdao.mapper.*;
+import com.xuyun.platform.dsfcenterdao.mapper.*;
 import com.xuyun.platform.dsfcenterdao.mapper.DsfBetlogGameVideoMapper;
 import com.xuyun.platform.dsfcenterdao.service.DsfSiteService;
 import com.xuyun.platform.dsfcenterdao.utlis.SiteUtil;

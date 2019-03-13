@@ -76,4 +76,4 @@ mapper:
 #  swagger 开关 http://localhost:8089/swagger-ui.html
 swagger:
   profile: dev
-  scope: com.invech.platform.dsfcenterservice.controller
+  scope: com.xuyun.platform.dsfcenterservice.controller

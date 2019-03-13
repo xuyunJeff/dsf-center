@@ -8,7 +8,7 @@
         <version>2.1.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.invech.platform</groupId>
+    <groupId>com.xuyun.platform</groupId>
     <artifactId>dsf-center-data</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>dsf-center-data</name>
@@ -101,8 +101,8 @@
             <artifactId>commons-codec</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>com.invech.kitty</groupId>-->
-            <!--<artifactId>invech-kitty-redis</artifactId>-->
+            <!--<groupId>com.xuyun.kitty</groupId>-->
+            <!--<artifactId>xuyun-kitty-redis</artifactId>-->
             <!--<version>0.0.1-SNAPSHOT</version>-->
         <!--</dependency>-->
 

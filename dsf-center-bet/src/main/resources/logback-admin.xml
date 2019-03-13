@@ -28,7 +28,7 @@
         </encoder> 
 	</appender>
 
-	<logger name="com.invech.platform" level="INFO" additivity="true">
+	<logger name="com.xuyun.platform" level="INFO" additivity="true">
 		<appender-ref ref="adminLog" />
 	</logger>
 

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * task config 任务调度器初始化
  */
 @Configuration
-@ComponentScan(basePackages = "com.invech.platform.dsfcenterbetlog.crons")
+@ComponentScan(basePackages = "com.xuyun.platform.dsfcenterbetlog.crons")
 @Slf4j
 public class TaskAdminConfig {
 

@@ -1,4 +1,4 @@
-package com.invech.platform.dsfcenterapi;
+package com.xuyun.platform.dsfcenterapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

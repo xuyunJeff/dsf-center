@@ -18,7 +18,7 @@ eureka:
 
 #mapper:
 #  mappers:
-#    - com.invech.platform.dsfcenterdao.mapper
+#    - com.xuyun.platform.dsfcenterdao.mapper
 #  style: normal
 #  not-empty: false
 #  identity: MYSQL

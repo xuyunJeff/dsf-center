@@ -1,6 +1,6 @@
 spring:
   application:
-    name: invech-eureka-service
+    name: xuyun-eureka-service
 server:
   port: 7000
 

@@ -22,7 +22,7 @@ import java.util.Properties;
 @Intercepts({@Signature(type = StatementHandler.class,method = "prepare",args = {Connection.class,Integer.class})})
 public class MybatisInterceptor implements Interceptor {
 
-    private final static String WHITE_MAPPER_METHOD = "com.invech.platform.dsfcenterdao.master" ;
+    private final static String WHITE_MAPPER_METHOD = "com.xuyun.platform.dsfcenterdao.master" ;
 
     private final static String MYBATIS_EXECUTE_SQL = "delegate.boundSql.sql";
 

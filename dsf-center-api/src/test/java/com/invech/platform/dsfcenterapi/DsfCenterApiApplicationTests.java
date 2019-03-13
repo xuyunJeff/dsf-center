@@ -1,4 +1,4 @@
-package com.invech.platform.dsfcenterapi;
+package com.xuyun.platform.dsfcenterapi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

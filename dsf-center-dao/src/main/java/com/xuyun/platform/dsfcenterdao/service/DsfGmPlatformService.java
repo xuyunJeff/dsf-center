@@ -6,7 +6,7 @@ import com.xuyun.platform.dsfcenterdao.master.DsfGmApiMapper;
 import com.xuyun.platform.dsfcenterdao.master.DsfGmApiPrefixMapper;
 import com.xuyun.platform.dsfcenterdao.master.DsfSiteMapper;
 import com.xuyun.platform.dsfcenterdata.constants.ApiConstants;
-import com.invech.platform.dsfcenterdata.entity.*;
+import com.xuyun.platform.dsfcenterdata.entity.*;
 import com.xuyun.platform.dsfcenterdata.enums.ErrorCode;
 import com.xuyun.platform.dsfcenterdata.enums.GamePlatform;
 import com.xuyun.platform.dsfcenterdata.response.R;

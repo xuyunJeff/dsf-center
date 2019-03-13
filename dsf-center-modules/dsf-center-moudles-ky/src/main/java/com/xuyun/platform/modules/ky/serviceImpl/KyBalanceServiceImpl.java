@@ -10,7 +10,7 @@ import com.xuyun.platform.dsfcenterdata.enums.TransferState;
 import com.xuyun.platform.dsfcenterdata.enums.TransferType;
 import com.xuyun.platform.dsfcenterdata.utils.DateUtil;
 import com.xuyun.platform.modules.common.constants.KyConstans;
-import com.invech.platform.modules.common.dto.ky.*;
+import com.xuyun.platform.modules.common.dto.ky.*;
 import com.xuyun.platform.modules.common.dto.ky.*;
 import com.xuyun.platform.modules.common.enums.KyErrorCode;
 import com.xuyun.platform.modules.ky.http.KyNetWork;

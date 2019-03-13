@@ -8,7 +8,7 @@ import com.xuyun.platform.dsfcenterdata.entity.DsfMemberUser;
 import com.xuyun.platform.dsfcenterdata.response.RRException;
 import com.xuyun.platform.dsfcenterdata.utils.GenerationSequenceUtil;
 import com.xuyun.platform.modules.common.constants.KyConstans;
-import com.invech.platform.modules.common.dto.ky.*;
+import com.xuyun.platform.modules.common.dto.ky.*;
 import com.xuyun.platform.modules.common.enums.KyErrorCode;
 import com.xuyun.platform.modules.ky.http.KyNetWork;
 import com.xuyun.platform.modules.common.dto.ky.*;

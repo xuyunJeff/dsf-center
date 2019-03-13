@@ -1,7 +1,7 @@
 package com.xuyun.platform.dsfcenterdao.master.dao;
 
 
-import com.invech.platform.dsfcenterdata.entity.*;
+import com.xuyun.platform.dsfcenterdata.entity.*;
 import com.xuyun.platform.dsfcenterdata.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

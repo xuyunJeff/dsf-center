@@ -11,10 +11,10 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.invech.platform</groupId>
-	<artifactId>invech-dsf-center</artifactId>
+	<groupId>com.xuyun.platform</groupId>
+	<artifactId>xuyun-dsf-center</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>invech-dsf-center</name>
+	<name>xuyun-dsf-center</name>
 	<description>第三方游戏对接</description>
 
 	<modules>
