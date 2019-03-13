@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: local
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+
+logging:
+  config: classpath:logback-admin.xml
+
+log:
+  level:
+    root: info
+    mylog: debug
+  file: ./log/dsf-center-bet.log
+  maxsize: 60MB
+
+server:
+  servlet:
+    context-path: /dsf-center-bet
+
+  port: 8090
+
+
