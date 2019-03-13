@@ -65,7 +65,7 @@ mybatis:
 
 mapper:
   mappers:
-  - com.invech.platform.dsfcenterdao.config.MybatisAutoMapper
+  - com.xuyun.platform.dsfcenterdao.config.MybatisAutoMapper
   style: camelhumpandlowercase
   not-empty: false
   identity: MYSQL

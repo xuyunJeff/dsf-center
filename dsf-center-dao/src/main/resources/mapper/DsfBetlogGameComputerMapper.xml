@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.invech.platform.dsfcenterdao.mapper.DsfBetlogGameComputerMapper">
+<mapper namespace="com.xuyun.platform.dsfcenterdao.mapper.DsfBetlogGameComputerMapper">
 
 
-    <resultMap type="com.invech.platform.dsfcenterdata.betlog.DsfBetlogGameComputer" id="DsfBetlogGameComputerMap">
+    <resultMap type="com.xuyun.platform.dsfcenterdata.betlog.DsfBetlogGameComputer" id="DsfBetlogGameComputerMap">
         <id column="dsf_platform_bet_id" property="dsfPlatformBetId"/>
         <result column="site_code" property="siteCode"/>
         <result column="bet_id" property="betId" />

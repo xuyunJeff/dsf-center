@@ -66,7 +66,7 @@ mybatis:
 
 mapper:
   mappers:
-    - com.invech.platform.dsfcenterdao.config.MybatisAutoMapper
+    - com.xuyun.platform.dsfcenterdao.config.MybatisAutoMapper
 #驼峰转下划线
   style: camelhumpandlowercase
   not-empty: false
