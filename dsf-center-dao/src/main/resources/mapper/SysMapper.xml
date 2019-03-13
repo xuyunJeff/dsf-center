@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.invech.platform.dsfcenterdao.master.dao.SysMapper">
+	<select id="findApis"
+		resultType="com.invech.platform.dsfcenterdata.entity.DsfGmApi">
+		select  t3.* ,t1.prefix,t1.available site_api_available,t2.site_code  from dsf_gm_api_prefix t1
+		inner JOIN dsf_site t2 on t1.site_id = t2.id
+		<if test="siteCode != null">
+		and t2.site_code = #{siteCode}
+		</if>
+		inner JOIN dsf_gm_api t3 on t3.id = t1.api_id;
+	</select>
+	<select id="findSite"
+		resultType="com.invech.platform.dsfcenterdata.entity.DsfSite">
+		select *
+		from dsf_site
+		where  available=1
+	</select>
+	<select id="findGmApiOne"
+		resultType="com.invech.platform.dsfcenterdata.entity.DsfGmApi">
+		select t1.site_code,t2.prefix,t3.* from dsf_site
+		t1,dsf_gm_api_prefix
+		t2,dsf_gm_api t3,dsf_gm_depot t4 where t1.id=t2.site_id and
+		t2.api_id=t3.id and t3.depot_id=t4.id and t4.available=1
+		and t1.site_code=#{siteCode} and t3.depot_id=#{depotId}
+		limit 1
+	</select>
+	<update id="updateSchema">
+		update dsf_schema set site_code=#{siteCode} ,is_used=1
+		where id=#{id} and is_used=0
+	</update>
+	<select id="selectDsfSchemaOne"
+		resultType="com.invech.platform.dsfcenterdata.entity.DsfSchema">
+		select * from dsf_schema where is_used=0 order by id asc limit
+		1
+	</select>
+
+	<select id="getSiteCode" resultType="java.lang.String">
+		select a.site_code from dsf_site a where a.schema_name=#{siteCode}
+	</select>
+
+	<update id="updateTschemaSiteCode" parameterType="com.invech.platform.dsfcenterdata.entity.DsfSchema">
+		update dsf_schema set site_code = #{siteCode} , is_used =  #{isUsed} where id = #{id} and is_used = 0
+	</update>
+
+	<insert id="insertApiPrefix" parameterType="com.invech.platform.dsfcenterdata.entity.DsfGmApiPrefix">
+	INSERT INTO dsf_gm_apiprefix (`api_id`, `prefix`, `site_id`, `available`, `create_user`, `create_time`, `modify_user`, `modify_time`)
+	VALUES
+	( #{apiId}, #{prefix}, #{siteId}, '1', #{createUser}, #{createTime}, #{modifyUser}, #{modifyTime});
+	</insert>
+
+	<select id="selectApiPrefixByModel" resultType="com.invech.platform.dsfcenterdata.entity.DsfGmApiPrefix">
+		select * from dsf_gm_api_prefix where site_id = 1 ;
+	</select>
+
+	<select id="selectPrefixByPrefixOrSiteCode" resultType="com.invech.platform.dsfcenterdata.entity.DsfGmApiPrefix">
+		SELECT a.* FROM dsf_gm_api_prefix a INNER   JOIN dsf_site b on a.site_id = b.id
+		<where>
+		    1=1
+			<if test="siteCode != null">
+				and b.site_code = #{siteCode}
+			</if>
+			<if test="prefix != null">
+				and a.prefix = #{prefix}
+			</if>
+		</where>
+	</select>
+
+	<select id="findGameListAg" resultType="com.invech.platform.dsfcenterdata.entity.DsfGmGame">
+		select * from dsf_gm_game where platform_code = #{platformCode} and game_param in
+		(
+		<foreach collection ="paramCodes" item="item" index= "index" separator =",">
+			#{item}
+		</foreach >
+		)
+	</select>
+</mapper>

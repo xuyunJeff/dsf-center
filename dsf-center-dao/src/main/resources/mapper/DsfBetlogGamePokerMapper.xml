@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.invech.platform.dsfcenterdao.mapper.DsfBetlogGamePokerMapper">
+
+
+    <resultMap type="com.invech.platform.dsfcenterdata.betlog.DsfBetlogGamePoker" id="DsfBetlogGamePokerMap">
+        <id column="dsf_platform_bet_id" property="dsfPlatformBetId"/>
+        <result column="site_code" property="siteCode"/>
+        <result column="bet_id" property="betId" />
+        <result column="id" property="id" />
+        <result column="category_name" property="categoryName" />
+        <result column="game_platform" property="gamePlatform" />
+        <result column="member_user" property="memberUser" />
+        <result column="dsf_player_id" property="dsfPlayerId" />
+        <result column="game_name_cn" property="gameNameCn" />
+        <result column="table_name" property="tableName" />
+        <result column="issue_no" property="issueNo" />
+        <result column="stake_amount" property="stakeAmount" />
+        <result column="valid_stake" property="validStake" />
+        <result column="win_loss" property="winLoss" />
+        <result column="jackpot" property="jackpot" />
+        <result column="game_time" property="gameTime" />
+        <result column="create_time" property="createTime" />
+        <result column="game_result" property="gameResult" />
+        <result column="remark" property="remark" />
+        <result column="result_picture_url" property="resultPictureUrl" />
+        <result column="month" property="month" />
+    </resultMap>
+
+    <select id="pokerGameBetlogsBatch" resultMap="DsfBetlogGamePokerMap">
+      select * ,${month} `month` from dsf_betlog_game_poker_${month} f where f.bet_id > ${lastUpdateId} limit #{size}
+    </select>
+
+
+    <update id="createPokerGameBetlog" >
+     CREATE TABLE  IF NOT EXISTS `dsf_betlog_game_poker_${month}` (
+      `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',
+      `bet_id` bigint(20) NOT NULL DEFAULT '0' COMMENT '注单id,自己通过程序生成',
+      `dsf_platform_bet_id` varchar(40) NOT NULL COMMENT '第三方游戏平台注单ID,使用replace into,和game_platform做唯一键.',
+      `category_name` varchar(10) NOT NULL COMMENT '注单类型',
+      `game_platform` varchar(5) NOT NULL COMMENT '游戏平台',
+      `member_user` varchar(40) NOT NULL COMMENT '平台账号',
+      `dsf_player_id` varchar(40) NOT NULL COMMENT '第三方账号Id',
+      `game_name_cn` varchar(40) NOT NULL COMMENT '游戏名称',
+      `table_name` varchar(40) NOT NULL COMMENT '桌号',
+      `issue_no` varchar(40) NOT NULL COMMENT '期号',
+      `stake_amount` decimal(11,2) NOT NULL COMMENT '投注金额',
+      `valid_stake` decimal(11,2) NOT NULL COMMENT '有效投注',
+      `win_loss` decimal(11,2) NOT NULL COMMENT '输赢',
+      `jackpot` decimal(11,2) NOT NULL COMMENT '奖池金额',
+      `create_time` datetime(4) NOT NULL ON UPDATE CURRENT_TIMESTAMP(4) COMMENT '数据下载时间,精确到毫秒后一位',
+      `game_time` datetime(3) NOT NULL COMMENT '游戏时间',
+      `game_result` varchar(255) NOT NULL COMMENT '游戏结果',
+      `remark` varchar(255) DEFAULT NULL COMMENT '其他内容,保存json字符串',
+      `result_picture_url` varchar(255) DEFAULT NULL COMMENT '结果图片',
+      `site_code` varchar(12) DEFAULT NULL COMMENT '站点前缀',
+      PRIMARY KEY (`id`) USING BTREE,
+      UNIQUE KEY `undex_bet_id_game_platform` (`dsf_platform_bet_id`,`game_platform`) USING BTREE,
+      KEY `index_category_name` (`category_name`) USING BTREE,
+      KEY `index_game_platform` (`game_platform`) USING BTREE,
+      KEY `index_member_user` (`member_user`) USING BTREE,
+      KEY `index_dsf_player_id` (`dsf_player_id`) USING BTREE,
+      KEY `index_create_time` (`create_time`) USING BTREE,
+      KEY `index_game_time` (`game_time`) USING BTREE,
+      KEY `index_game_name` (`game_name_cn`) USING BTREE
+    ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='第三方真人注单表';
+    </update>
+
+</mapper>

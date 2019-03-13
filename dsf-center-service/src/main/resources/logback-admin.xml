@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<configuration>
+	<springProperty name="logFile" source="log.file" />
+	<springProperty name="rootlevel" source="log.level.root" />
+	<springProperty name="mylevel" source="log.level.mylog" />
+	<springProperty name="maxFileSize" source="log.maxsize" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%white(%date{yyyy-MM-dd HH:mm:ss})    %highlight%yellow(%-5level) [  %boldMagenta(%thread)  ]      %blue(%file:%line) : %green(%logger) : %cyan(%msg%n)</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+
+	<appender name="adminLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logFile}</file>
+		<encoder>
+			<pattern>%d [%thread] %msg%n
+			</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logFile}.%d{yyyy-MM-dd}.%i</fileNamePattern>
+			<maxFileSize>3GB</maxFileSize>
+		</rollingPolicy>
+		 <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
+           	<pattern>%d{yyyy/MM/dd-HH:mm:ss}|%p|%t|%r|%c|%L|%m%n</pattern>  
+        </encoder> 
+	</appender>
+
+	<logger name="com.invech.platform" level="INFO" additivity="true">
+		<appender-ref ref="adminLog" />
+	</logger>
+
+	<appender name="flatfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_FILE}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<totalSizeCap>3GB</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<root level="info">
+		 <appender-ref ref="STDOUT"/>
+		<appender-ref ref="flatfile" />
+	</root>
+
+</configuration>

@@ -1,0 +1,84 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: dsf-center-bet
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.50.50.46:8066/dsf_center_master?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    password: 123.com
+    username: root
+    druid:
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  #redis conf
+  cache:
+    type: redis
+  redis:
+    host: 10.50.50.111
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 10
+        min-idle: 1
+        max-wait: 1500ms
+    database: 10
+#    password: 123.com
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}:${eureka.instance.appname}
+    appname: dsf-center-bet
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://10.50.50.121:7000/eureka/
+
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+mapper:
+  mappers:
+  - com.invech.platform.dsfcenterdao.config.MybatisAutoMapper
+  style: camelhumpandlowercase
+  not-empty: false
+  identity: MYSQL
+
+task:
+  admin:
+   addresses: http://10.50.50.121:8555/xxl-job-admin
+   #addresses: http://localhost:8555/xxl-job-admin
+  executor:
+    appname: dsf-center-bet
+    ip:
+#      此处执行器区第三方注册的端口
+    port: 8091
+    logpath: ./dsf-center-bet
+    logretentiondays: 30
+  accessToken:
